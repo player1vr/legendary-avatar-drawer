@@ -1,5 +1,5 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Summon Spirit · Legendary Spirit Domain Card Drawer</title>
+<title>Legendary Avatar · Soul Domain Card Drawer</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='14' fill='%23a78bfa'/><text x='16' y='22' font-size='16' text-anchor='middle' fill='white' font-family='sans-serif'>S</text></svg>">
 <style>
 :root{--bg:#12151b;--panel:#1a1e26;--card:#222836;--text:#e7eaef;--muted:#8b95a5;--accent:#a78bfa;--danger:#ef4444;--border:#2f3542;}
@@ -62,12 +62,13 @@ main{max-width:980px;margin:0 auto;padding:18px 16px 40px;}
 </style></head><body>
 <button class="theme-btn" onclick="toggleTheme()">Theme</button>
 <header>
-<h1>Summon Spirit · Legendary Spirit Domain Card Drawer</h1>
-<div class="sub">Source: Daggerheart Official SRD</div>
+<h1>Legendary Avatar · Soul Domain Card Drawer</h1>
+<div class="sub">Domain cards: Daggerheart Official SRD · Skill: 降灵神通 / Legendary Avatar (homebrew)</div>
 <div class="skill">
-  <div class="shead"><h2>SUMMON SPIRIT</h2><span class="smeta">Level 8 Soul Spell · Recall Cost: 2</span></div>
-  <p>Once per long rest, spend 2 Hope to summon a Legendary Spirit. Choose a domain other than the Soul domain, shuffle that domain's cards, and draw 5 of them to place beside this card; these become the domain cards the Legendary Spirit can use.</p>
-  <p class="rule">Rule: Each time you make an action roll, or whenever the spirit takes any amount of damage, remove 1 domain card. When all domain cards are removed, the spirit dissipates.</p>
+  <div class="shead"><h2>LEGENDARY AVATAR</h2><span class="smeta">Level 8 Spirit Spell · Recall Cost: 2</span></div>
+  <div style="font-size:11px;color:var(--muted);margin:2px 0 8px;letter-spacing:1px">降灵神通</div>
+  <p>Once per session, <strong>spend 2 Hope</strong> to summon a Legendary Avatar that shares your Evasion, traits, and Proficiency, and can equip weapons. Choose a domain other than Spirit and randomly draw 5 domain cards from it, placing them beside this card as the Avatar's loadout (you pay any costs required by these cards).</p>
+  <p>Make a <strong>Spellcast Roll</strong> to have the Avatar take an action. After each of the Avatar's actions, or whenever the Avatar would take any damage, remove one of its cards. When all cards are removed, the Avatar dissipates.</p>
 </div>
 </header>
 <main>
@@ -192,7 +193,7 @@ function downloadOffline(){
   const blob=new Blob([html],{type:'text/html;charset=utf-8'});
   const a=document.createElement('a');
   a.href=URL.createObjectURL(blob);
-  a.download='Summon Spirit Domain Card Drawer.html';
+  a.download='Legendary Avatar Domain Card Drawer.html';
   document.body.appendChild(a); a.click(); document.body.removeChild(a);
   setTimeout(()=>URL.revokeObjectURL(a.href),1000);
   status('Offline HTML exported.');
