@@ -72,18 +72,13 @@ main{max-width:980px;margin:0 auto;padding:18px 16px 40px;}
 </div>
 </header>
 <main>
-<div class="panel"><h2>Source Domain (single select)</h2><div class="domains" id="domains"></div></div>
+<div class="panel"><h2>Source Domain</h2><div class="domains" id="domains"></div></div>
 <div class="panel">
   <div class="controls">
     <button class="btn btn-primary" id="drawBtn" onclick="draw()">Draw 5 Domain Cards</button>
     <button class="btn btn-danger" onclick="clearAll()">Remove All</button>
     <span class="status" id="status"></span>
   </div>
-  <div class="secondary">
-    <button class="btn btn-ghost" onclick="copyLink()">Copy Link</button>
-    <button class="btn btn-ghost" onclick="downloadOffline()">Download Offline</button>
-  </div>
-  <div class="hint">Tip: Tap “Download Offline” to save this tool as a single HTML file — works offline, on any device, or self-hosted, with no dependency on this link.</div>
 </div>
 <div id="result"></div>
 </main>
@@ -170,34 +165,6 @@ function clearAll(){
 }
 function status(msg){$('status').textContent=msg;}
 function toggleTheme(){document.body.classList.toggle('light');}
-function copyLink(){
-  const url=location.href;
-  if(navigator.clipboard && navigator.clipboard.writeText){
-    navigator.clipboard.writeText(url).then(()=>status('Share link copied.')).catch(()=>fallbackCopy(url));
-  } else { fallbackCopy(url); }
-}
-function fallbackCopy(url){
-  const t=document.createElement('textarea');
-  t.value=url; t.style.position='fixed'; t.style.opacity='0';
-  document.body.appendChild(t); t.select();
-  try{ document.execCommand('copy'); status('Share link copied.'); }
-  catch(e){ status('Copy failed — please copy the address bar manually.'); }
-  document.body.removeChild(t);
-}
-function downloadOffline(){
-  const res=document.getElementById('result');
-  const snapshot=res.innerHTML;
-  res.innerHTML='';
-  const html='<!DOCTYPE html>\n'+document.documentElement.outerHTML;
-  res.innerHTML=snapshot;
-  const blob=new Blob([html],{type:'text/html;charset=utf-8'});
-  const a=document.createElement('a');
-  a.href=URL.createObjectURL(blob);
-  a.download='Legendary Avatar Domain Card Drawer.html';
-  document.body.appendChild(a); a.click(); document.body.removeChild(a);
-  setTimeout(()=>URL.revokeObjectURL(a.href),1000);
-  status('Offline HTML exported.');
-}
 init();
 </script>
 </body></html>
